@@ -27,9 +27,10 @@
 "use client";
 
 import React, { useState, useEffect, createContext, useContext } from "react";
-import UserDataContext from "@/stores/userContext";
+import { UserDataContext } from "../stores/userContext";
 import useTheme from "@/stores/useTheme"; // adjust path
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 // Loading Context for global loading state management
 const LoadingContext = createContext();
@@ -155,7 +156,7 @@ const MobileNavMenu = ({
               <>
                 <Link
                   key={item}
-                  to={linkPath}
+                  href={linkPath}
                   style={mobileLinkStyles}
                   onClick={() => {
                     handleNavClick(index);
@@ -173,7 +174,7 @@ const MobileNavMenu = ({
 
           <Link
             key={"signup"}
-            to={"/signup"}
+            href={"/signup"}
             style={mobileLinkStyles}
             onClick={() => {
               onClose();
@@ -188,7 +189,7 @@ const MobileNavMenu = ({
           {isLoggedIn ? (
             <Link
               key={"profile"}
-              to={"/profile"}
+              href={"/profile"}
               style={mobileLinkStyles}
               onClick={() => {
                 onClose();
@@ -202,7 +203,7 @@ const MobileNavMenu = ({
           ) : (
             <Link
               key={"login"}
-              to={"/login"}
+              href={"/login"}
               style={mobileLinkStyles}
               onClick={() => {
                 // handleNavClick(index);
@@ -369,7 +370,7 @@ const Header = () => {
       >
         <header style={getHeaderStyles(isMobile, theme)}>
           {/* User Profile Section */}
-          <Link to={"/"}>
+          <Link href={"/"}>
             <div style={profileContainerStyles}>
               <div style={avatarContainerStyles}>
                 <img
@@ -499,7 +500,7 @@ const Header = () => {
                   <>
                     <Link
                       key={item}
-                      to={linkPath}
+                      href={linkPath}
                       style={linkStyles}
                       onClick={() => handleNavClick(index)}
                     >
@@ -526,14 +527,14 @@ bg-dark = #242728 / #0F0F0F / #181818 / #0A0A0A
 
               <div className="absolute top-28 left-80 items-center justify-center flex text-center gap-0.5">
                 <Link
-                  to={`/signup`}
+                  href={`/signup`}
                   className={`${theme === "dark" ? "text-white hover:bg-[#242728]" : "text-orange-500 hover:bg-red-400 hover:text-white"}  items-center justify-center px-1.5 py-0.5 rounded-md`}
                 >
                   signup
                 </Link>
 
                 <Link
-                  to={isLoggedIn ? `/profile` : `/login`}
+                  href={isLoggedIn ? `/profile` : `/login`}
                   className={`${theme === "dark" ? "text-white hover:bg-[#242728]" : "text-orange-500 hover:bg-red-400 hover:text-white"} px-1.5 ${(isLoggedIn || !(Object.values(user)[0] == "")) && "-ml-1"}  items-center justify-center py-0.5  rounded-md`}
                 >
                   {isLoggedIn ? "profile" : "login"}
@@ -905,38 +906,38 @@ const handleMouseLeave = (e, pos, isActive) => {
 };
 
 // Add CSS animations
-const styleSheet = document.createElement("style");
-styleSheet.textContent = `
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
+// const styleSheet = document.createElement("style");
+// styleSheet.textContent = `
+//   @keyframes shimmer {
+//     0% { transform: translateX(-100%); }
+//     100% { transform: translateX(100%); }
+//   }
 
-  @keyframes bounce {
-    0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
-    40% { transform: scale(1); opacity: 1; }
-  }
+//   @keyframes bounce {
+//     0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+//     40% { transform: scale(1); opacity: 1; }
+//   }
 
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
+//   @keyframes slideIn {
+//     from {
+//       opacity: 0;
+//       transform: translate(-50%, -50%) scale(0.8);
+//     }
+//     to {
+//       opacity: 1;
+//       transform: translate(-50%, -50%) scale(1);
+//     }
+//   }
 
-  @media (max-width: 768px) {
-    .hamburger-button:hover .hamburger-line:nth-child(1) {
-      transform: translateY(-1px);
-    }
-    .hamburger-button:hover .hamburger-line:nth-child(3) {
-      transform: translateY(1px);
-    }
-  }
-`;
-document.head.appendChild(styleSheet);
+//   @media (max-width: 768px) {
+//     .hamburger-button:hover .hamburger-line:nth-child(1) {
+//       transform: translateY(-1px);
+//     }
+//     .hamburger-button:hover .hamburger-line:nth-child(3) {
+//       transform: translateY(1px);
+//     }
+//   }
+// `;
+// document.head.appendChild(styleSheet);
 
-export default Header;
+// export default Header;
