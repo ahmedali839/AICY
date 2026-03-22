@@ -369,7 +369,6 @@ const Header = () => {
         className={`w-full flex justify-center items-center ${theme === "dark" ? "bg-[#181818]" : ""}`}
       >
         <header style={getHeaderStyles(isMobile, theme)}>
-          {/* User Profile Section */}
           <Link href={"/"}>
             <div style={profileContainerStyles}>
               <div style={avatarContainerStyles}>
