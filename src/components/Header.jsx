@@ -28,7 +28,7 @@
 
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { UserDataContext } from "../stores/userContext";
-import useTheme from "@/stores/useTheme"; // adjust path
+import useTheme from "../stores/useTheme"; // adjust path
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -516,15 +516,6 @@ const Header = () => {
                 );
               })}
 
-              {/* extraas
-
-dark-text = #adb5bd
-light text = text-[#d8f3dc]
-
-bg-dark = #242728 / #0F0F0F / #181818 / #0A0A0A
-
-*/}
-
               <div className="absolute top-28 left-80 items-center justify-center flex text-center gap-0.5">
                 <Link
                   href={`/signup`}
@@ -535,7 +526,7 @@ bg-dark = #242728 / #0F0F0F / #181818 / #0A0A0A
 
                 <Link
                   href={isLoggedIn ? `/profile` : `/login`}
-                  className={`${theme === "dark" ? "text-white hover:bg-[#242728]" : "text-orange-500 hover:bg-red-400 hover:text-white"} px-1.5 ${(isLoggedIn || !(Object.values(user)[0] == "")) && "-ml-1"}  items-center justify-center py-0.5  rounded-md`}
+                  className={`${theme === "dark" ? "text-white hover:bg-[#242728]" : "text-orange-500 hover:bg-red-400 hover:text-white"} px-1.5 ${(isLoggedIn || (user && Object.values(user)[0] !== "")) ? "-ml-1" : ""}  items-center justify-center py-0.5  rounded-md`}
                 >
                   {isLoggedIn ? "profile" : "login"}
                 </Link>
@@ -940,4 +931,4 @@ const handleMouseLeave = (e, pos, isActive) => {
 // `;
 // document.head.appendChild(styleSheet);
 
-// export default Header;
+export default Header;
