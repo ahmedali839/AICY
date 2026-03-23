@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
             </div>
           </div>
         </nav>
-        <main className="flex-grow">
+        <main className="flex-grow animate-fadeIn">
           <LoadingProvider>
             <UserDataProvider>{children}</UserDataProvider>
           </LoadingProvider>
