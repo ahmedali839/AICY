@@ -8,6 +8,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'primary': '#4A90E2', // A soft, professional blue
+        'secondary': '#50E3C2', // A complementary soft teal
+        'background': '#F4F7F9', // A very light gray for backgrounds
+        'text-primary': '#333333',
+        'text-secondary': '#555555',
+        'border': '#DDDDDD',
+      },
+      fontFamily: {
+        sans: ["var(--font-roboto)"],
+        heading: ["var(--font-poppins)"],
+        'open-sans': ["var(--font-open-sans)"],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
