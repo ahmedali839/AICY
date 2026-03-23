@@ -46,13 +46,13 @@ export default function RootLayout({ children }) {
                 My Site
               </Link>
               <div className="flex space-x-4 font-sans">
-                <Link href="/about" className="text-text-secondary hover:text-primary">
+                <Link href="/about" className="text-text-secondary hover:text-primary transition-transform duration-300 ease-in-out hover:scale-105">
                   About
                 </Link>
-                <Link href="/projects" className="text-text-secondary hover:text-primary">
+                <Link href="/projects" className="text-text-secondary hover:text-primary transition-transform duration-300 ease-in-out hover:scale-105">
                   Projects
                 </Link>
-                <Link href="/contact" className="text-text-secondary hover:text-primary">
+                <Link href="/contact" className="text-text-secondary hover:text-primary transition-transform duration-300 ease-in-out hover:scale-105">
                   Contact
                 </Link>
               </div>
