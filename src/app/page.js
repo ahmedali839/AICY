@@ -6,9 +6,10 @@ import { useEffect } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import ScrollQuote from '../components/ScrollQuote';
+import AnimatedBanner from '../components/AnimatedBanner';
 import PremiumButton from '../components/PremiumButton';
 import {
-  FaSparkles,
+  FaPalette,
   FaBolt,
   FaMobileAlt,
   FaLock,
@@ -318,6 +319,9 @@ export default function Home() {
       {/* ===== SCROLL QUOTE SECTION ===== */}
       <ScrollQuote />
 
+      {/* ===== ANIMATED BANNER SECTION ===== */}
+      <AnimatedBanner />
+
       {/* ===== FEATURES SECTION ===== */}
       <section className="relative py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -333,7 +337,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {[
               {
-                Icon: FaSparkles,
+                Icon: FaPalette,
                 title: 'Beautiful Design',
                 description: 'Stunning interfaces crafted to captivate and engage your users.',
               },
@@ -458,7 +462,7 @@ export default function Home() {
                   key={index}
                   className="project-card group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white p-6 sm:p-8 lg:p-10 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 bg-gradient-to-br from-blue-100 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full -mr-16 -mt-16"></div>
+                  <div className="project-glow absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 bg-gradient-to-br from-blue-100 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full -mr-16 -mt-16"></div>
                   
                   <div className="relative z-10">
                     <div className="mb-4 sm:mb-6">
