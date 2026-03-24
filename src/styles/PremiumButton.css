@@ -1,0 +1,211 @@
+/* Premium Button Styles */
+.premium-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+}
+
+/* Animated multicolor border */
+.premium-button-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    #2563eb,
+    #7c3aed,
+    #db2777,
+    #f97316,
+    #eab308,
+    #2563eb
+  );
+  background-size: 200% 100%;
+  background-position: 0% 0;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Inner button content */
+.premium-button-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 14px 40px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  color: white;
+  box-shadow: 
+    0 0 20px rgba(37, 99, 235, 0.4),
+    inset 0 0 10px rgba(37, 99, 235, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.premium-button-text {
+  position: relative;
+  z-index: 2;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  transition: letter-spacing 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+/* Hover state */
+.premium-button:hover .premium-button-inner {
+  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+  box-shadow: 
+    0 0 30px rgba(37, 99, 235, 0.6),
+    inset 0 0 20px rgba(37, 99, 235, 0.2),
+    0 0 60px rgba(37, 99, 235, 0.3);
+}
+
+.premium-button:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.premium-button:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .premium-button {
+    font-size: 16px;
+    padding: 2px;
+  }
+
+  .premium-button-inner {
+    padding: 12px 32px;
+  }
+
+  .premium-button-text {
+    font-size: 14px;
+  }
+
+  .premium-button:hover {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+/* Animation keyframes for additional pulse effect */
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(37, 99, 235, 0.4),
+      inset 0 0 10px rgba(37, 99, 235, 0.1),
+      0 0 0px rgba(37, 99, 235, 0);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(37, 99, 235, 0.6),
+      inset 0 0 10px rgba(37, 99, 235, 0.15),
+      0 0 20px rgba(37, 99, 235, 0.2);
+  }
+}
+
+.premium-button-inner {
+  animation: buttonPulse 3s ease-in-out infinite;
+}
+
+/* Accessibility - focus state */
+.premium-button:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .premium-button-border {
+    animation: none;
+    background-position: 0% 0;
+  }
+
+  .premium-button-inner {
+    animation: none;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+
+  .premium-button:hover {
+    transform: none;
+  }
+
+  .premium-button:active {
+    transform: none;
+  }
+
+  .premium-button-text {
+    transition: none;
+  }
+}
+
+/* Smooth gradient text for better visibility */
+.premium-button-text {
+  font-weight: 700;
+  font-size: clamp(14px, 1.2vw, 16px);
+  white-space: nowrap;
+  mix-blend-mode: lighten;
+}
+
+/* Additional premium shine effect */
+.premium-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: shine 3s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 50px;
+}
+
+@keyframes shine {
+  0% {
+    transform: translate(-100%, -100%) rotate(0deg);
+  }
+  50% {
+    transform: translate(0%, 0%) rotate(180deg);
+  }
+  100% {
+    transform: translate(100%, 100%) rotate(360deg);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .premium-button-inner {
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+  }
+
+  .premium-button:hover .premium-button-inner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  }
+}

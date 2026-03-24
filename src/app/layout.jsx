@@ -1,8 +1,9 @@
-import { Inter, Poppins, Roboto, Open_Sans } from "next/font/google";
+import { Inter, Poppins, Roboto, Open_Sans, Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 import { LoadingProvider } from "../components/Header";
 import { UserDataProvider } from "../stores/userContext";
-import Link from "next/link";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,43 +28,37 @@ const openSans = Open_Sans({
   variable: '--font-open-sans',
 });
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-playfair',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-montserrat',
+});
+
 export const metadata = {
-  title: "AICY",
-  description: "AICY Digital-Solutions",
+  title: "AICY - Digital Solutions",
+  description: "Transform your vision into exceptional digital experiences with AICY's professional web solutions.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${poppins.variable} ${roboto.variable} ${openSans.variable} h-full antialiased`}
+      className={`${inter.variable} ${poppins.variable} ${roboto.variable} ${openSans.variable} ${playfair.variable} ${montserrat.variable} scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-background">
-        <nav className="bg-white shadow-md">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center py-4">
-              <Link href="/" className="text-2xl font-bold text-text-primary font-heading">
-                My Site
-              </Link>
-              <div className="flex space-x-4 font-sans">
-                <Link href="/about" className="text-text-secondary hover:text-primary transition-transform duration-300 ease-in-out hover:scale-105">
-                  About
-                </Link>
-                <Link href="/projects" className="text-text-secondary hover:text-primary transition-transform duration-300 ease-in-out hover:scale-105">
-                  Projects
-                </Link>
-                <Link href="/contact" className="text-text-secondary hover:text-primary transition-transform duration-300 ease-in-out hover:scale-105">
-                  Contact
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <main className="flex-grow animate-fadeIn">
+      <body className="min-h-screen flex flex-col bg-white antialiased">
+        <Navbar />
+        <main className="flex-grow pt-16 lg:pt-20">
           <LoadingProvider>
             <UserDataProvider>{children}</UserDataProvider>
           </LoadingProvider>
         </main>
+        <Footer />
       </body>
     </html>
   );

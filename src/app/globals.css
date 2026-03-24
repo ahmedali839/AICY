@@ -2,36 +2,157 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: theme('colors.text-primary');
-  background-color: theme('colors.background');
+/* ===== ROOT AND TYPOGRAPHY ===== */
+:root {
+  --font-poppins: var(--font-poppins);
+  --font-playfair: var(--font-playfair);
+  --font-montserrat: var(--font-montserrat);
+  --font-inter: var(--font-inter);
+  --font-roboto: var(--font-roboto);
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-roboto, 'Roboto', sans-serif);
+  color: #1a202c;
+  background-color: #ffffff;
+  antialiased: true;
+}
+
+/* ===== TYPOGRAPHY STYLES ===== */
+
+/* Headings with Playfair Display for elegance */
+h1, h2, h3 {
+  font-family: var(--font-montserrat, 'Montserrat', sans-serif);
+  @apply font-bold tracking-tight;
+}
+
+h1 {
+  @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl lg:text-5xl leading-snug;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl;
+}
+
+h4 {
+  @apply text-xl font-semibold;
+}
+
+h5 {
+  @apply text-lg font-semibold;
+}
+
+h6 {
+  @apply text-base font-semibold;
+}
+
+/* Paragraph and text styles */
+p {
+  @apply text-base md:text-lg leading-relaxed text-slate-700;
+}
+
+.text-hero {
+  @apply text-5xl md:text-7xl font-black;
+  font-family: var(--font-montserrat, 'Montserrat', sans-serif);
+}
+
+.text-section-title {
+  @apply text-4xl md:text-5xl font-bold text-center;
+  font-family: var(--font-montserrat, 'Montserrat', sans-serif);
+}
+
+.text-card-title {
+  @apply text-2xl font-bold;
+  font-family: var(--font-poppins, 'Poppins', sans-serif);
+}
+
+.text-accent {
+  @apply text-orange-600 font-semibold;
+}
+
+.text-muted {
+  @apply text-slate-600 font-light;
+}
+
+/* ===== GLOBAL STYLES ===== */
 
 @media (prefers-color-scheme: dark) {
   body {
-    color: theme('colors.background');
-    background-color: #1a202c; /* A dark color for dark mode */
+    color: #f3f4f6;
+    background-color: #1f2937;
   }
 }
 
+/* ===== ANIMATIONS ===== */
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease-in-out;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Add this to the bottom of globals.css */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes bounce {
-  0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
-  40% { transform: scale(1); opacity: 1; }
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {
@@ -45,11 +166,140 @@ body {
   }
 }
 
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.8);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600;
+}
+
+.gradient-text-alt {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-pink-500;
+}
+
+/* Buttons */
+.btn {
+  @apply px-6 py-3 font-semibold rounded-lg transition-all duration-300;
+}
+
+.btn-primary {
+  @apply px-6 py-3 font-semibold rounded-lg bg-gradient-to-r from-orange-500 via-rose-500 to-pink-500 text-white hover:shadow-lg hover:scale-105 hover:-translate-y-1 transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 font-semibold rounded-lg border-2 border-orange-400 text-orange-600 hover:bg-orange-50 transition-all duration-300;
+}
+
+.btn-ghost {
+  @apply px-6 py-3 font-semibold rounded-lg text-orange-600 hover:bg-orange-50 transition-all duration-300;
+}
+
+/* Cards */
+.card {
+  @apply rounded-2xl border border-orange-100 bg-white shadow-sm hover:shadow-xl transition-all duration-300;
+}
+
+.card-gradient {
+  @apply rounded-2xl bg-gradient-to-br from-orange-50 to-rose-50 border border-orange-200 shadow-sm hover:shadow-xl transition-all duration-300;
+}
+
+/* Smooth scrolling for links */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Remove default focus styles and add custom ones */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  @apply outline-none ring-2 ring-orange-500 ring-offset-2;
+}
+
+/* Responsive typography */
 @media (max-width: 768px) {
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  .text-hero {
+    @apply text-3xl;
+  }
+
+  .text-section-title {
+    @apply text-2xl;
+  }
+}
+
+/* Hamburger animation */
+@media (max-width: 1024px) {
   .hamburger-button:hover .hamburger-line:nth-child(1) {
     transform: translateY(-1px);
   }
+
   .hamburger-button:hover .hamburger-line:nth-child(3) {
     transform: translateY(1px);
+  }
+}
+
+/* Print styles */
+@media print {
+  header,
+  footer,
+  nav {
+    display: none;
   }
 }
