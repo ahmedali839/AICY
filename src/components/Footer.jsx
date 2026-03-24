@@ -1,169 +1,162 @@
 'use client';
 
 import Link from 'next/link';
-import { FaLinkedin, FaYoutube, FaInstagram, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { FaLinkedin, FaYoutube, FaInstagram, FaTwitter, FaDiscord, FaSpotify, FaArrowUp } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import gsap from 'gsap';
 
-function Footer() {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    gsap.to(window, {
+      scrollTo: 0,
+      duration: 1,
+      ease: 'power2.inOut',
+    });
+  };
 
   const socialLinks = [
-    {
-      icon: FaYoutube,
-      href: 'https://www.youtube.com/@AiandCodewithYar',
-      label: 'YouTube',
-      color: 'hover:text-red-600',
-    },
-    {
-      icon: FaLinkedin,
-      href: 'https://www.linkedin.com/in/ahmed-yar-rasheed/',
-      label: 'LinkedIn',
-      color: 'hover:text-blue-600',
-    },
-    {
-      icon: FaInstagram,
-      href: 'https://www.instagram.com/aiandcodewithyar/',
-      label: 'Instagram',
-      color: 'hover:text-pink-600',
-    },
-    {
-      icon: FaEnvelope,
-      href: 'mailto:ahmedyarr1212@gmail.com',
-      label: 'Email',
-      color: 'hover:text-orange-600',
-    },
-    {
-      icon: FaPhone,
-      href: 'tel:+923715335433',
-      label: 'Phone',
-      color: 'hover:text-green-600',
-    },
+    { icon: FaLinkedin, href: '#', label: 'LinkedIn', color: 'hover:text-blue-700' },
+    { icon: FaYoutube, href: '#', label: 'YouTube', color: 'hover:text-red-600' },
+    { icon: FaInstagram, href: '#', label: 'Instagram', color: 'hover:text-pink-600' },
+    { icon: FaTwitter, href: '#', label: 'Twitter', color: 'hover:text-blue-400' },
+    { icon: FaDiscord, href: '#', label: 'Discord', color: 'hover:text-indigo-500' },
+    { icon: FaSpotify, href: '#', label: 'Spotify', color: 'hover:text-green-500' },
   ];
 
-  const footerSections = {
+  const footerLinks = {
     Product: [
-      { name: 'Features', href: '#features' },
-      { name: 'Pricing', href: '#pricing' },
-      { name: 'Security', href: '#security' },
-      { name: 'Performance', href: '#performance' },
+      { name: 'Features', href: '#' },
+      { name: 'Pricing', href: '#' },
+      { name: 'Security', href: '#' },
+      { name: 'Enterprise', href: '#' },
     ],
     Company: [
       { name: 'About', href: '/about' },
-      { name: 'Blog', href: '#blog' },
-      { name: 'Careers', href: '#careers' },
-      { name: 'Press', href: '#press' },
+      { name: 'Blog', href: '#' },
+      { name: 'Careers', href: '#' },
+      { name: 'Press', href: '#' },
     ],
     Resources: [
-      { name: 'Documentation', href: '#docs' },
-      { name: 'API Reference', href: '#api' },
-      { name: 'Support', href: '#support' },
-      { name: 'Contact', href: '/contact' },
+      { name: 'Documentation', href: '#' },
+      { name: 'API Reference', href: '#' },
+      { name: 'Community', href: '#' },
+      { name: 'Support', href: '#' },
     ],
     Legal: [
-      { name: 'Privacy', href: '#privacy' },
-      { name: 'Terms', href: '#terms' },
-      { name: 'Cookie Policy', href: '#cookies' },
-      { name: 'License', href: '#license' },
+      { name: 'Privacy', href: '#' },
+      { name: 'Terms', href: '#' },
+      { name: 'Cookies', href: '#' },
+      { name: 'License', href: '#' },
     ],
   };
 
   return (
-    <footer className="bg-white border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">A</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900">AICY</h3>
-                <p className="text-xs text-gray-600">Digital Solutions</p>
-              </div>
-            </Link>
-            <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-              Transforming visions into exceptional digital experiences. We craft solutions that inspire, engage, and drive results for forward-thinking companies.
-            </p>
+    <footer className="relative bg-gradient-to-b from-white via-neutral-50 to-neutral-900 border-t border-neutral-200 overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+      </div>
 
-            <div className="flex gap-4">
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className={`text-gray-600 transition-colors duration-300 ${social.color} text-lg md:text-xl`}
-                  >
-                    <Icon />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-
-          {Object.entries(footerSections).map(([category, links]) => (
-            <div key={category}>
-              <h4 className="text-sm font-semibold text-gray-900 mb-4">{category}</h4>
-              <ul className="space-y-3">
-                {links.map((link, index) => (
-                  <li key={index}>
-                    <Link href={link.href} className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-300">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="border-t border-gray-200 pt-8 mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div>
-              <h4 className="text-sm font-semibold text-gray-900 mb-2">Get in Touch</h4>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p>
-                  <a href="mailto:ahmedyarr1212@gmail.com" className="hover:text-gray-900 transition-colors">
-                    ahmedyarr1212@gmail.com
-                  </a>
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Top section */}
+        <div className="px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+          <div className="max-w-7xl mx-auto">
+            {/* Main footer content */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 sm:gap-12 lg:gap-8 mb-16 lg:mb-24">
+              {/* Brand section */}
+              <div className="lg:col-span-2">
+                <Link href="/" className="flex items-center gap-2 mb-6 group">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-lg">A</span>
+                  </div>
+                  <span className="text-xl font-bold text-neutral-900 group-hover:text-blue-600 transition-colors duration-300">AICY</span>
+                </Link>
+                <p className="text-neutral-600 leading-relaxed mb-8 max-w-sm">
+                  Transform your vision into stunning digital experiences with our premium web solutions.
                 </p>
-                <p>
-                  <a href="tel:+923715335433" className="hover:text-gray-900 transition-colors">
-                    +92 371 533 5433
-                  </a>
-                </p>
+                <div className="flex gap-3 flex-wrap">
+                  {socialLinks.map((social) => {
+                    const Icon = social.icon;
+                    return (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        aria-label={social.label}
+                        className={`w-10 h-10 rounded-lg bg-neutral-100 hover:bg-blue-50 flex items-center justify-center text-neutral-600 transition-all duration-300 transform hover:scale-110 ${social.color}`}
+                      >
+                        <Icon className="w-4 h-4" />
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
+
+              {/* Links section */}
+              {Object.entries(footerLinks).map(([category, links]) => (
+                <div key={category}>
+                  <h3 className="text-sm lg:text-base font-bold text-neutral-900 mb-4 lg:mb-6 uppercase tracking-wide">{category}</h3>
+                  <ul className="space-y-3">
+                    {links.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="text-neutral-600 hover:text-blue-600 text-sm transition-colors duration-300 font-medium group flex items-center gap-2"
+                        >
+                          <span className="w-0 h-0.5 bg-blue-600 group-hover:w-4 transition-all duration-300"></span>
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-            <div>
-              <h4 className="text-sm font-semibold text-gray-900 mb-2">Follow Us</h4>
-              <p className="text-sm text-gray-600">
-                Connect with us on social media for updates, tips, and insights.
+
+            {/* Divider */}
+            <div className="h-px bg-gradient-to-r from-transparent via-neutral-300 to-transparent mb-12 lg:mb-16"></div>
+
+            {/* Bottom section */}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <p className="text-neutral-600 text-sm">
+                © {currentYear} AICY. All rights reserved.
               </p>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-200 pt-8">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-600">
-              <p>{`© ${currentYear}`} AICY. All rights reserved.</p>
-              <div className="flex gap-6">
-                <Link href="#privacy" className="hover:text-gray-900 transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="#terms" className="hover:text-gray-900 transition-colors">
-                  Terms of Service
-                </Link>
-                <Link href="#cookies" className="hover:text-gray-900 transition-colors">
-                  Cookies
-                </Link>
+              <div className="flex items-center gap-6">
+                <p className="text-neutral-600 text-sm">
+                  Made with <span className="text-red-500">❤</span> by passionate developers
+                </p>
+                
+                {/* Scroll to top button */}
+                {showScrollTop && (
+                  <button
+                    onClick={scrollToTop}
+                    className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center hover:bg-purple-600 transform hover:scale-110 transition-all duration-300 shadow-lg"
+                    aria-label="Scroll to top"
+                  >
+                    <FaArrowUp className="w-4 h-4" />
+                  </button>
+                )}
               </div>
             </div>
           </div>
         </div>
+
+        {/* Footer gradient background */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-neutral-900 pointer-events-none"></div>
       </div>
     </footer>
   );
 }
-
-export default Footer;
