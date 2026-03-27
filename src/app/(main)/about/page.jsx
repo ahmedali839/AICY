@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import React, { useEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,10 +30,14 @@ const teamMembers = [
 const AboutPage = () => {
   useEffect(() => {
     // Header animation
-    gsap.fromTo('.about-header', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
+    gsap.fromTo(
+      ".about-header",
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+    );
 
     // Feature cards animation
-    const cards = document.querySelectorAll('.feature-item');
+    const cards = document.querySelectorAll(".feature-item");
     cards.forEach((card, index) => {
       gsap.fromTo(
         card,
@@ -45,17 +49,17 @@ const AboutPage = () => {
           duration: 0.8,
           scrollTrigger: {
             trigger: card,
-            start: 'top 80%',
-            end: 'top 50%',
+            start: "top 80%",
+            end: "top 50%",
             scrub: 1,
           },
-          ease: 'power2.out',
-        }
+          ease: "power2.out",
+        },
       );
     });
 
     // Team members animation
-    const teamCards = document.querySelectorAll('.team-card');
+    const teamCards = document.querySelectorAll(".team-card");
     teamCards.forEach((card, index) => {
       gsap.fromTo(
         card,
@@ -66,13 +70,13 @@ const AboutPage = () => {
           y: 0,
           scrollTrigger: {
             trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            start: "top 85%",
+            toggleActions: "play none none reverse",
           },
           duration: 0.8,
-          ease: 'back.out(1.5)',
+          ease: "back.out(1.5)",
           delay: index * 0.15,
-        }
+        },
       );
     });
 
@@ -91,7 +95,8 @@ const AboutPage = () => {
             About Our Company
           </h1>
           <p className="text-xl md:text-2xl text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            We're a passionate team dedicated to creating exceptional digital experiences that transform businesses
+            We're a passionate team dedicated to creating exceptional digital
+            experiences that transform businesses
           </p>
         </div>
       </section>
@@ -106,26 +111,36 @@ const AboutPage = () => {
           <div className="space-y-8">
             {[
               {
-                title: 'Innovation',
-                description: 'We stay ahead of the curve, constantly exploring new technologies and approaches.',
-                icon: '💡',
+                title: "Innovation",
+                description:
+                  "We stay ahead of the curve, constantly exploring new technologies and approaches.",
+                icon: "💡",
               },
               {
-                title: 'Quality',
-                description: 'Excellence is not an option—it\'s our standard in every project we undertake.',
-                icon: '✨',
+                title: "Quality",
+                description:
+                  "Excellence is not an option—it's our standard in every project we undertake.",
+                icon: "✨",
               },
               {
-                title: 'Collaboration',
-                description: 'We believe the best solutions come from working closely with our clients.',
-                icon: '🤝',
+                title: "Collaboration",
+                description:
+                  "We believe the best solutions come from working closely with our clients.",
+                icon: "🤝",
               },
             ].map((feature, index) => (
-              <div key={index} className="feature-item p-8 bg-gradient-to-br from-orange-100 to-rose-100 rounded-2xl border border-white/50 backdrop-blur-sm hover:border-orange-300 transition-all duration-300 flex gap-6 items-start">
+              <div
+                key={index}
+                className="feature-item p-8 bg-gradient-to-br from-orange-100 to-rose-100 rounded-2xl border border-white/50 backdrop-blur-sm hover:border-orange-300 transition-all duration-300 flex gap-6 items-start"
+              >
                 <div className="text-5xl flex-shrink-0">{feature.icon}</div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-800 mb-3">{feature.title}</h3>
-                  <p className="text-slate-700 text-lg">{feature.description}</p>
+                  <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-700 text-lg">
+                    {feature.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -147,8 +162,12 @@ const AboutPage = () => {
                 className="team-card bg-white rounded-2xl p-8 border-2 border-orange-100 hover:border-orange-300 shadow-sm hover:shadow-xl transition-all duration-300 text-center"
               >
                 <div className="text-8xl mb-4">{member.icon}</div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-2">{member.name}</h3>
-                <p className="text-orange-600 font-semibold mb-4">{member.role}</p>
+                <h3 className="text-2xl font-bold text-slate-800 mb-2">
+                  {member.name}
+                </h3>
+                <p className="text-orange-600 font-semibold mb-4">
+                  {member.role}
+                </p>
                 <p className="text-slate-600">{member.bio}</p>
               </div>
             ))}
@@ -164,15 +183,20 @@ const AboutPage = () => {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { number: '10+', label: 'Years Experience' },
-              { number: '250+', label: 'Projects Completed' },
-              { number: '100+', label: 'Happy Clients' },
+              { number: "10+", label: "Years Experience" },
+              { number: "250+", label: "Projects Completed" },
+              { number: "100+", label: "Happy Clients" },
             ].map((stat, index) => (
-              <div key={index} className="p-8 bg-gradient-to-br from-orange-100 to-amber-100 rounded-2xl border border-white/50">
+              <div
+                key={index}
+                className="p-8 bg-gradient-to-br from-orange-100 to-amber-100 rounded-2xl border border-white/50"
+              >
                 <div className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600">
                   {stat.number}
                 </div>
-                <p className="text-slate-700 font-semibold mt-3">{stat.label}</p>
+                <p className="text-slate-700 font-semibold mt-3">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>

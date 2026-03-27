@@ -1,13 +1,11 @@
+"use client";
 
-'use client';
-
-import Link from 'next/link';
-import { useEffect } from 'react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import ScrollQuote from '../components/ScrollQuote';
-import AnimatedBanner from '../components/AnimatedBanner';
-import PremiumButton from '../components/PremiumButton';
+import Link from "next/link";
+import { useEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import AnimatedBanner from "../components/AnimatedBanner";
+import PremiumButton from "../components/PremiumButton";
 import {
   FaPalette,
   FaBolt,
@@ -19,7 +17,7 @@ import {
   FaStar,
   FaChartLine,
   FaCode,
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,67 +25,67 @@ export default function Home() {
   useEffect(() => {
     // ===== HERO SECTION =====
     // Hero background parallax
-    gsap.to('.hero-bg-1', {
+    gsap.to(".hero-bg-1", {
       scrollTrigger: {
-        trigger: '.hero-section',
-        start: 'top top',
-        end: 'bottom top',
+        trigger: ".hero-section",
+        start: "top top",
+        end: "bottom top",
         scrub: 1,
       },
       y: 200,
-      ease: 'none',
+      ease: "none",
     });
 
-    gsap.to('.hero-bg-2', {
+    gsap.to(".hero-bg-2", {
       scrollTrigger: {
-        trigger: '.hero-section',
-        start: 'top top',
-        end: 'bottom top',
+        trigger: ".hero-section",
+        start: "top top",
+        end: "bottom top",
         scrub: 1,
       },
       y: -150,
-      ease: 'none',
+      ease: "none",
     });
 
-    gsap.to('.hero-bg-3', {
+    gsap.to(".hero-bg-3", {
       scrollTrigger: {
-        trigger: '.hero-section',
-        start: 'top top',
-        end: 'bottom top',
+        trigger: ".hero-section",
+        start: "top top",
+        end: "bottom top",
         scrub: 1,
       },
       y: 100,
-      ease: 'none',
+      ease: "none",
     });
 
     // Hero content
     gsap.fromTo(
-      '.hero-content h1',
+      ".hero-content h1",
       { opacity: 0, y: 60 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
     );
 
     gsap.fromTo(
-      '.hero-content p',
+      ".hero-content p",
       { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: 'power3.out' }
+      { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: "power3.out" },
     );
 
     gsap.fromTo(
-      '.hero-buttons > *',
+      ".hero-buttons > *",
       { opacity: 0, scale: 0.9 },
-      { 
-        opacity: 1, 
-        scale: 1, 
-        duration: 0.8, 
-        delay: 0.4, 
-        stagger: 0.15, 
-        ease: 'back.out(1.5)' 
-      }
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        delay: 0.4,
+        stagger: 0.15,
+        ease: "back.out(1.5)",
+      },
     );
 
     // ===== FEATURES SECTION =====
-    const features = document.querySelectorAll('.feature-card');
+    const features = document.querySelectorAll(".feature-card");
     features.forEach((feature, index) => {
       gsap.fromTo(
         feature,
@@ -99,49 +97,49 @@ export default function Home() {
           duration: 0.8,
           scrollTrigger: {
             trigger: feature,
-            start: 'top 85%',
-            end: 'top 50%',
+            start: "top 85%",
+            end: "top 50%",
             scrub: 1,
           },
-          ease: 'power2.out',
-        }
+          ease: "power2.out",
+        },
       );
 
       // Icon rotation based on scroll
       gsap.fromTo(
-        feature.querySelector('.feature-icon'),
+        feature.querySelector(".feature-icon"),
         { rotation: -45, scale: 0.5 },
         {
           rotation: 0,
           scale: 1,
           scrollTrigger: {
             trigger: feature,
-            start: 'top 85%',
-            end: 'top 50%',
+            start: "top 85%",
+            end: "top 50%",
             scrub: 1,
           },
-          ease: 'back.out(1)',
-        }
+          ease: "back.out(1)",
+        },
       );
 
       // Background gradient animation
       gsap.to(feature, {
         scrollTrigger: {
           trigger: feature,
-          start: 'top 60%',
-          end: 'bottom 40%',
+          start: "top 60%",
+          end: "bottom 40%",
           scrub: 1,
         },
-        '--glow-opacity': 0.3,
-        ease: 'none',
+        "--glow-opacity": 0.3,
+        ease: "none",
       });
     });
 
     // ===== STATS SECTION =====
-    const stats = document.querySelectorAll('.stat-item');
+    const stats = document.querySelectorAll(".stat-item");
     stats.forEach((stat, index) => {
-      const number = stat.querySelector('.stat-number');
-      const target = parseInt(number.getAttribute('data-target'));
+      const number = stat.querySelector(".stat-number");
+      const target = parseInt(number.getAttribute("data-target"));
 
       gsap.fromTo(
         number,
@@ -151,15 +149,15 @@ export default function Home() {
           duration: 2.5,
           scrollTrigger: {
             trigger: stat,
-            start: 'top 75%',
-            toggleActions: 'play none none none',
+            start: "top 75%",
+            toggleActions: "play none none none",
           },
           snap: { textContent: 1 },
-          ease: 'power1.inOut',
+          ease: "power1.inOut",
           onUpdate: function () {
             number.textContent = Math.ceil(number.textContent);
           },
-        }
+        },
       );
 
       // Stat card scale animation
@@ -171,24 +169,24 @@ export default function Home() {
           scale: 1,
           scrollTrigger: {
             trigger: stat,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
+            start: "top 80%",
+            toggleActions: "play none none none",
           },
           duration: 0.6,
-          ease: 'back.out(1.5)',
+          ease: "back.out(1.5)",
           delay: index * 0.1,
-        }
+        },
       );
     });
 
     // ===== PROJECTS SECTION =====
-    const projects = document.querySelectorAll('.project-card');
+    const projects = document.querySelectorAll(".project-card");
     projects.forEach((project, index) => {
       // Card entrance
       gsap.fromTo(
         project,
-        { 
-          opacity: 0, 
+        {
+          opacity: 0,
           x: index % 2 === 0 ? -100 : 100,
           rotationY: index % 2 === 0 ? -15 : 15,
         },
@@ -199,31 +197,31 @@ export default function Home() {
           duration: 1,
           scrollTrigger: {
             trigger: project,
-            start: 'top 75%',
-            end: 'top 25%',
+            start: "top 75%",
+            end: "top 25%",
             scrub: 1,
           },
-          ease: 'power2.out',
-        }
+          ease: "power2.out",
+        },
       );
 
       // Glow effect on scroll
-      const glow = project.querySelector('.project-glow');
+      const glow = project.querySelector(".project-glow");
       gsap.to(glow, {
         scrollTrigger: {
           trigger: project,
-          start: 'top 75%',
-          end: 'bottom 25%',
+          start: "top 75%",
+          end: "bottom 25%",
           scrub: 1,
         },
         opacity: 0.4,
         scale: 1.2,
-        ease: 'none',
+        ease: "none",
       });
     });
 
     // ===== TESTIMONIALS SECTION =====
-    const testimonials = document.querySelectorAll('.testimonial-card');
+    const testimonials = document.querySelectorAll(".testimonial-card");
     testimonials.forEach((card, index) => {
       gsap.fromTo(
         card,
@@ -233,45 +231,45 @@ export default function Home() {
           y: 0,
           scrollTrigger: {
             trigger: card,
-            start: 'top 80%',
-            end: 'top 50%',
+            start: "top 80%",
+            end: "top 50%",
             scrub: 1,
           },
           duration: 0.8,
-          ease: 'power2.out',
+          ease: "power2.out",
           delay: index * 0.1,
-        }
+        },
       );
     });
 
     // ===== CTA SECTION =====
     gsap.fromTo(
-      '.cta-section',
+      ".cta-section",
       { opacity: 0, scale: 0.85, y: 50 },
       {
         opacity: 1,
         scale: 1,
         y: 0,
         scrollTrigger: {
-          trigger: '.cta-section',
-          start: 'top 70%',
-          end: 'top 30%',
+          trigger: ".cta-section",
+          start: "top 70%",
+          end: "top 30%",
           scrub: 1,
         },
-        ease: 'power2.out',
-      }
+        ease: "power2.out",
+      },
     );
 
     // CTA button glow
-    gsap.to('.cta-button', {
+    gsap.to(".cta-button", {
       scrollTrigger: {
-        trigger: '.cta-section',
-        start: 'top 70%',
-        end: 'bottom 30%',
+        trigger: ".cta-section",
+        start: "top 70%",
+        end: "bottom 30%",
         scrub: 1,
       },
-      '--button-glow': 1,
-      ease: 'none',
+      "--button-glow": 1,
+      ease: "none",
     });
 
     // Cleanup
@@ -308,13 +306,13 @@ export default function Home() {
           </h1>
 
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-10 sm:mb-14 lg:mb-16 text-neutral-600 max-w-3xl mx-auto leading-relaxed font-light px-2 sm:px-0">
-            Transform your vision into beautiful, responsive, and high-performance web solutions that captivate users and drive real results.
+            Transform your vision into beautiful, responsive, and
+            high-performance web solutions that captivate users and drive real
+            results.
           </p>
 
           <div className="hero-buttons flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 flex-wrap px-2 sm:px-0">
-            <PremiumButton href="/projects">
-              Explore Work
-            </PremiumButton>
+            <PremiumButton href="/projects">Explore Work</PremiumButton>
             <Link
               href="/about"
               className="px-8 sm:px-10 py-3 sm:py-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold rounded-full text-sm sm:text-base lg:text-lg transition-all duration-300"
@@ -324,14 +322,11 @@ export default function Home() {
           </div>
         </div>
 
-      {/* ===== SCROLL INDICATOR ===== */}
+        {/* ===== SCROLL INDICATOR ===== */}
         <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <FaArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
         </div>
       </section>
-
-      {/* ===== SCROLL QUOTE SECTION ===== */}
-      <ScrollQuote />
 
       {/* ===== ANIMATED BANNER SECTION ===== */}
       <AnimatedBanner />
@@ -341,12 +336,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-20 lg:mb-32">
-            <p className="text-sm sm:text-base font-semibold text-blue-600 mb-4">OUR SERVICES</p>
+            <p className="text-sm sm:text-base font-semibold text-blue-600 mb-4">
+              OUR SERVICES
+            </p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8 text-neutral-900">
               Why Choose Us
             </h2>
             <p className="text-lg lg:text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-              We blend creativity with technology to deliver solutions that exceed expectations and set new industry standards.
+              We blend creativity with technology to deliver solutions that
+              exceed expectations and set new industry standards.
             </p>
           </div>
 
@@ -355,38 +353,43 @@ export default function Home() {
             {[
               {
                 Icon: FaPalette,
-                title: 'Beautiful Design',
-                description: 'Stunning interfaces crafted to captivate and engage your users with precision.',
-                color: 'from-blue-500 to-cyan-500',
+                title: "Beautiful Design",
+                description:
+                  "Stunning interfaces crafted to captivate and engage your users with precision.",
+                color: "from-blue-500 to-cyan-500",
               },
               {
                 Icon: FaBolt,
-                title: 'Lightning Fast',
-                description: 'Optimized performance for the fastest load times and smooth interactions.',
-                color: 'from-purple-500 to-pink-500',
+                title: "Lightning Fast",
+                description:
+                  "Optimized performance for the fastest load times and smooth interactions.",
+                color: "from-purple-500 to-pink-500",
               },
               {
                 Icon: FaMobileAlt,
-                title: 'Fully Responsive',
-                description: 'Perfect experience across all devices, screens, and browsers.',
-                color: 'from-emerald-500 to-teal-500',
+                title: "Fully Responsive",
+                description:
+                  "Perfect experience across all devices, screens, and browsers.",
+                color: "from-emerald-500 to-teal-500",
               },
               {
                 Icon: FaLock,
-                title: 'Secure & Safe',
-                description: 'Enterprise-grade security protecting your data and privacy.',
-                color: 'from-orange-500 to-red-500',
+                title: "Secure & Safe",
+                description:
+                  "Enterprise-grade security protecting your data and privacy.",
+                color: "from-orange-500 to-red-500",
               },
               {
                 Icon: FaRocket,
-                title: 'Scalable Growth',
-                description: 'Solutions that grow with your business needs effortlessly.',
-                color: 'from-indigo-500 to-purple-500',
+                title: "Scalable Growth",
+                description:
+                  "Solutions that grow with your business needs effortlessly.",
+                color: "from-indigo-500 to-purple-500",
               },
               {
                 Icon: FaUsers,
-                title: 'Expert Support',
-                description: 'Dedicated team ready to help you succeed always.',
+                title: "Expert Support",
+                description: "Dedicated team ready to help you succeed always.",
               },
             ].map((feature, index) => {
               const Icon = feature.Icon;
@@ -396,10 +399,14 @@ export default function Home() {
                   className="feature-card group relative p-8 lg:p-10 bg-white rounded-2xl border border-neutral-200 hover:border-neutral-300 hover:shadow-xl transition-all duration-500 h-full overflow-hidden"
                 >
                   {/* Gradient background on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}
+                  ></div>
 
                   {/* Icon container */}
-                  <div className={`mb-6 lg:mb-8 w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 shadow-lg`}>
+                  <div
+                    className={`mb-6 lg:mb-8 w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 shadow-lg`}
+                  >
                     <Icon className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
                   </div>
 
@@ -414,7 +421,9 @@ export default function Home() {
                   </div>
 
                   {/* Bottom accent */}
-                  <div className={`absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r ${feature.color} group-hover:w-full transition-all duration-500`}></div>
+                  <div
+                    className={`absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r ${feature.color} group-hover:w-full transition-all duration-500`}
+                  ></div>
                 </div>
               );
             })}
@@ -426,7 +435,9 @@ export default function Home() {
       <section className="relative py-24 lg:py-40 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-neutral-50 via-blue-50/50 to-purple-50/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20 lg:mb-32">
-            <p className="text-sm sm:text-base font-semibold text-blue-600 mb-4">PROVEN RESULTS</p>
+            <p className="text-sm sm:text-base font-semibold text-blue-600 mb-4">
+              PROVEN RESULTS
+            </p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900">
               Our Track Record
             </h2>
@@ -434,12 +445,15 @@ export default function Home() {
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {[
-              { number: 250, label: 'Projects Delivered', suffix: '+' },
-              { number: 98, label: 'Client Satisfaction', suffix: '%' },
-              { number: 75, label: 'Team Members', suffix: '+' },
-              { number: 15, label: 'Years Experience', suffix: '+' },
+              { number: 250, label: "Projects Delivered", suffix: "+" },
+              { number: 98, label: "Client Satisfaction", suffix: "%" },
+              { number: 75, label: "Team Members", suffix: "+" },
+              { number: 15, label: "Years Experience", suffix: "+" },
             ].map((stat, index) => (
-              <div key={index} className="stat-item group relative text-center p-8 sm:p-10 lg:p-12 bg-white border border-neutral-200 rounded-2xl hover:border-blue-300 hover:shadow-xl transition-all duration-500 overflow-hidden">
+              <div
+                key={index}
+                className="stat-item group relative text-center p-8 sm:p-10 lg:p-12 bg-white border border-neutral-200 rounded-2xl hover:border-blue-300 hover:shadow-xl transition-all duration-500 overflow-hidden"
+              >
                 {/* Background accent */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 to-purple-50/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -451,7 +465,9 @@ export default function Home() {
                     </span>
                     <span className="text-2xl sm:text-3xl">{stat.suffix}</span>
                   </div>
-                  <p className="text-neutral-600 text-sm sm:text-base lg:text-lg font-semibold tracking-wide group-hover:text-neutral-900 transition-colors duration-300">{stat.label}</p>
+                  <p className="text-neutral-600 text-sm sm:text-base lg:text-lg font-semibold tracking-wide group-hover:text-neutral-900 transition-colors duration-300">
+                    {stat.label}
+                  </p>
                 </div>
               </div>
             ))}
@@ -463,7 +479,9 @@ export default function Home() {
       <section className="relative py-24 lg:py-40 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20 lg:mb-32">
-            <p className="text-sm sm:text-base font-semibold text-blue-600 mb-4">OUR WORK</p>
+            <p className="text-sm sm:text-base font-semibold text-blue-600 mb-4">
+              OUR WORK
+            </p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8 text-neutral-900">
               Featured Projects
             </h2>
@@ -475,27 +493,31 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
             {[
               {
-                title: 'E-Commerce Revolution',
-                description: 'Next-gen shopping platform with 40% conversion increase.',
-                tags: ['React', 'Next.js', 'Stripe'],
+                title: "E-Commerce Revolution",
+                description:
+                  "Next-gen shopping platform with 40% conversion increase.",
+                tags: ["React", "Next.js", "Stripe"],
                 icon: FaChartLine,
               },
               {
-                title: 'Analytics Dashboard',
-                description: 'Real-time insights platform handling 1M+ daily events.',
-                tags: ['Next.js', 'D3.js', 'PostgreSQL'],
+                title: "Analytics Dashboard",
+                description:
+                  "Real-time insights platform handling 1M+ daily events.",
+                tags: ["Next.js", "D3.js", "PostgreSQL"],
                 icon: FaCode,
               },
               {
-                title: 'Mobile-First App',
-                description: '2M+ downloads across iOS and Android with 4.8/5 rating.',
-                tags: ['React Native', 'Firebase', 'GraphQL'],
+                title: "Mobile-First App",
+                description:
+                  "2M+ downloads across iOS and Android with 4.8/5 rating.",
+                tags: ["React Native", "Firebase", "GraphQL"],
                 icon: FaMobileAlt,
               },
               {
-                title: 'Content Hub',
-                description: 'Headless CMS for 500+ content creators managing millions.',
-                tags: ['Headless CMS', 'API-First', 'CDN'],
+                title: "Content Hub",
+                description:
+                  "Headless CMS for 500+ content creators managing millions.",
+                tags: ["Headless CMS", "API-First", "CDN"],
                 icon: FaCode,
               },
             ].map((project, index) => {
@@ -507,10 +529,12 @@ export default function Home() {
                 >
                   {/* Animated gradient background */}
                   <div className="project-glow absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+
                   {/* Badge */}
                   <div className="relative z-10 inline-block mb-6 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full">
-                    <p className="text-xs sm:text-sm font-semibold text-blue-600">PROJECT #{index + 1}</p>
+                    <p className="text-xs sm:text-sm font-semibold text-blue-600">
+                      PROJECT #{index + 1}
+                    </p>
                   </div>
 
                   <div className="relative z-10">
@@ -520,8 +544,12 @@ export default function Home() {
                     </div>
 
                     {/* Title & Description */}
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-5 text-neutral-900 group-hover:text-blue-600 transition-colors duration-300">{project.title}</h3>
-                    <p className="text-neutral-600 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed group-hover:text-neutral-700 transition-colors duration-300">{project.description}</p>
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-5 text-neutral-900 group-hover:text-blue-600 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-neutral-600 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed group-hover:text-neutral-700 transition-colors duration-300">
+                      {project.description}
+                    </p>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10">
@@ -547,7 +575,12 @@ export default function Home() {
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                     </Link>
                   </div>
@@ -562,7 +595,9 @@ export default function Home() {
       <section className="relative py-24 lg:py-40 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20 lg:mb-32">
-            <p className="text-sm sm:text-base font-semibold text-blue-600 mb-4">TESTIMONIALS</p>
+            <p className="text-sm sm:text-base font-semibold text-blue-600 mb-4">
+              TESTIMONIALS
+            </p>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900">
               What Clients Say
             </h2>
@@ -571,22 +606,23 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
-                quote: 'Transformed our entire digital presence in just 3 months.',
-                author: 'Sarah Johnson',
-                role: 'CEO, Tech Startup',
-                avatar: '🚀',
+                quote:
+                  "Transformed our entire digital presence in just 3 months.",
+                author: "Sarah Johnson",
+                role: "CEO, Tech Startup",
+                avatar: "🚀",
               },
               {
-                quote: 'Outstanding quality and exceeded all our expectations.',
-                author: 'Michael Chen',
-                role: 'Product Manager',
-                avatar: '💎',
+                quote: "Outstanding quality and exceeded all our expectations.",
+                author: "Michael Chen",
+                role: "Product Manager",
+                avatar: "💎",
               },
               {
-                quote: 'Best investment we made for our brand this year.',
-                author: 'Emma Williams',
-                role: 'Marketing Director',
-                avatar: '⭐',
+                quote: "Best investment we made for our brand this year.",
+                author: "Emma Williams",
+                role: "Marketing Director",
+                avatar: "⭐",
               },
             ].map((testimonial, index) => (
               <div
@@ -619,8 +655,12 @@ export default function Home() {
                       {testimonial.avatar}
                     </div>
                     <div>
-                      <p className="font-bold text-neutral-900 text-sm sm:text-base">{testimonial.author}</p>
-                      <p className="text-blue-600 text-xs sm:text-sm font-medium">{testimonial.role}</p>
+                      <p className="font-bold text-neutral-900 text-sm sm:text-base">
+                        {testimonial.author}
+                      </p>
+                      <p className="text-blue-600 text-xs sm:text-sm font-medium">
+                        {testimonial.role}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -635,7 +675,10 @@ export default function Home() {
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div
+            className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+            style={{ animationDelay: "2s" }}
+          ></div>
         </div>
 
         <div className="max-w-5xl mx-auto relative z-10 text-center">
@@ -645,14 +688,17 @@ export default function Home() {
 
             {/* Content */}
             <div className="relative z-10">
-              <p className="text-sm sm:text-base font-semibold text-blue-600 mb-6">READY TO ELEVATE?</p>
-              
+              <p className="text-sm sm:text-base font-semibold text-blue-600 mb-6">
+                READY TO ELEVATE?
+              </p>
+
               <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-8 sm:mb-10 lg:mb-12 leading-[1.1] text-neutral-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
                 Ready to Transform Your Vision Into Reality?
               </h2>
 
               <p className="text-lg sm:text-xl lg:text-2xl text-neutral-600 mb-10 sm:mb-14 lg:mb-16 max-w-3xl mx-auto leading-relaxed font-light group-hover:text-neutral-700 transition-colors duration-300">
-                Let's collaborate to create something extraordinary that drives real results and sets new industry standards.
+                Let's collaborate to create something extraordinary that drives
+                real results and sets new industry standards.
               </p>
 
               {/* CTA Buttons */}
