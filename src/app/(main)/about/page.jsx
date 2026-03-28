@@ -36,7 +36,7 @@ const AboutPage = () => {
       { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
     );
 
-    // Feature cards animation
+    // Feature cards animations
     const cards = document.querySelectorAll(".feature-item");
     cards.forEach((card, index) => {
       gsap.fromTo(
@@ -58,7 +58,8 @@ const AboutPage = () => {
       );
     });
 
-    // Team members animation
+
+    
     const teamCards = document.querySelectorAll(".team-card");
     teamCards.forEach((card, index) => {
       gsap.fromTo(
